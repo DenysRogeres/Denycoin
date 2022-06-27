@@ -13,7 +13,7 @@ export function Header() {
                     <Box>
                         <img src="src\assets\denycoin-logo.svg" height={28}/>
                     </Box>
-                    <Typography compnent="div" sx={{ 
+                    <Typography component="div" sx={{ 
                         fontFamily:'Roboto',
                         fontSize: '1.5rem',
                         fontWeight: '700',
