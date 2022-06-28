@@ -1,6 +1,13 @@
 import { Header } from '../components/Header';
 import { TableGrid } from '../components/TableGrid';
 import { Grid, TextField, Container, Button, Typography  } from '@mui/material';
+import * as httpClienteService from '../services/httpclientService'
+
+const pesquisarCriptos = async () => {
+    let response = await httpClienteService.obterCriptos();
+    console.log(response);
+}
+
 
 export function Home() {
     return (
@@ -28,7 +35,12 @@ export function Home() {
                         <TextField fullWidth label="Exchange" variant="outlined"/>
                     </Grid>
                     <Grid item lg={2}>
-                        <Button sx={{ height: "100%"}} size="large" fullWidth variant="contained">
+                        <Button onClick={pesquisarCriptos}
+                            sx={{ height: "100%"}} 
+                            size="large" 
+                            fullWidth 
+                            variant="contained"
+                        >
                             <Typography sx={{ 
                                 fontFamily:'Roboto',
                                 fontSize: '1.15rem',
