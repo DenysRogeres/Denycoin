@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { createTheme } from "@mui/material/styles";
 import { Button, 
         Table, 
         TableBody, 
@@ -8,7 +7,8 @@ import { Button,
         TableHead, 
         TableRow,
         Typography, 
-        Link 
+        Link, 
+        Box 
       } from '@mui/material';
 
 export function TableGrid({lista}) {
@@ -30,7 +30,10 @@ export function TableGrid({lista}) {
           {lista.map((data) => (
             <TableRow key={data.sigla}>
               <TableCell component="th" scope="row">
-                {data.sigla}
+                <Box sx={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
+                  <Box sx={{height: 25, width: 25, marginRight: 1}} component="img" src={data.image} />
+                  <Box>{data.sigla}</Box>
+                </Box>
               </TableCell>
               <TableCell align="center">{data.nome}</TableCell>
               <TableCell align="center">${data.preco}</TableCell>
