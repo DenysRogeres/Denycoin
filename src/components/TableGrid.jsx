@@ -1,25 +1,15 @@
 import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import { Button } from '@mui/material';
+import { Button, 
+        Table, 
+        TableBody, 
+        TableCell,
+        TableContainer, 
+        TableHead, 
+        TableRow, 
+        Link 
+      } from '@mui/material';
 
-function createData(sigla, nome, preco, variacao, capitalizacao, tipo, comprar) {
-  return { sigla, nome, preco, variacao, capitalizacao, tipo, comprar };
-}
-
-const rows = [
-  createData('BTC', 'Bitcoin', 159, 6.0, 24, 'Small', 'comprar'),
-  createData('BTC', 'Bitcoin', 159, 6.0, 24, 'Small', 'comprar'),
-  createData('BTC', 'Bitcoin', 159, 6.0, 24, 'Small', 'comprar'),
-  createData('BTC', 'Bitcoin', 159, 6.0, 24, 'Small', 'comprar'),
-  createData('BTC', 'Bitcoin', 159, 6.0, 24, 'Small', 'comprar'),
-];
-
-export function TableGrid() {
+export function TableGrid({lista}) {
   return (
     <TableContainer>
       <Table sx={{ minWidth: 650 }} aria-label="caption table">
@@ -35,18 +25,22 @@ export function TableGrid() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.sigla}>
+          {lista.map((data) => (
+            <TableRow key={data.sigla}>
               <TableCell component="th" scope="row">
-                {row.sigla}
+                {data.sigla}
               </TableCell>
-              <TableCell align="center">{row.nome}</TableCell>
-              <TableCell align="center">{row.preco}</TableCell>
-              <TableCell align="center">{row.variacao}</TableCell>
-              <TableCell align="center">{row.capitalizacao}</TableCell>
-              <TableCell align="center">{row.tipo}</TableCell>
+              <TableCell align="center">{data.nome}</TableCell>
+              <TableCell align="center">${data.preco}</TableCell>
+              <TableCell align="center">{data.variacao}%</TableCell>
+              <TableCell align="center">${data.capitalizacao}M</TableCell>
+              <TableCell align="center">{data.tipo}</TableCell>
               <TableCell align="center">
-                <Button variant="contained" size="small">Comprar</Button>
+                <Link href={data.comprar} underline="none">
+                  <Button variant="contained" size="small">
+                    Comprar
+                  </Button>
+                </Link>
               </TableCell>
             </TableRow>
           ))}

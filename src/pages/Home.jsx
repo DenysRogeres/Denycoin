@@ -1,19 +1,23 @@
+import React,  { useState, useEffect } from 'react';
 import { Header } from '../components/Header';
 import { TableGrid } from '../components/TableGrid';
 import { Grid, TextField, Container, Button, Typography  } from '@mui/material';
-import * as httpClienteService from '../services/httpclientService'
-
-const pesquisarCriptos = async () => {
-    let response = await httpClienteService.obterCriptos();
-    console.log(response);
-}
+import * as httpClienteService from '../services/httpclientService';
 
 
 export function Home() {
+    let [listaCoin, setListaCoin] = useState([]);
+
+    const pesquisarCriptos = async () => {
+        await httpClienteService.obterCriptos().then((data) => {
+            setListaCoin(data);
+        });
+    }
+    
     return (
         <>
             <Header />
-            
+          
             <Container maxWidth="lg" 
                 sx={{ 
                     marginTop: 12,
@@ -43,7 +47,7 @@ export function Home() {
                         >
                             <Typography sx={{ 
                                 fontFamily:'Roboto',
-                                fontSize: '1.15rem',
+                                fontSize: '1rem',
                                 fontWeight: '700'}}>
                             Pesquisar
                             </Typography>
@@ -51,7 +55,7 @@ export function Home() {
                     </Grid>
                 </Grid>
             </Container >
-
+        
             <Container maxWidth="lg" 
                 sx={{ 
                     marginTop: 3,
@@ -59,10 +63,8 @@ export function Home() {
                     borderRadius: 2,
                     padding: 2,
                 }}>
-
-                <TableGrid />
+                <TableGrid lista={listaCoin}/>
             </Container>
-
         </>
     )
 }
