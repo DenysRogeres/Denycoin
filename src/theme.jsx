@@ -24,6 +24,10 @@ export const theme = createTheme({
       text: {
         primary: '#e1e1e6',
         secondary: '#fffff'
+      },
+      span: {
+        positivo: '#0ECB81',
+        negativo: '#F6465D'
       }
     }
   });

@@ -33,10 +33,10 @@ export function Home() {
                         <TextField fullWidth label="Criptomoeda" variant="outlined"/>
                     </Grid>
                     <Grid item lg={2}>
-                        <TextField fullWidth label="Tipo" variant="outlined"/>
+                        <TextField disabled fullWidth label="Tipo" variant="outlined"/>
                     </Grid>
                     <Grid item lg={3}>
-                        <TextField fullWidth label="Exchange" variant="outlined"/>
+                        <TextField disabled fullWidth label="Exchange" variant="outlined"/>
                     </Grid>
                     <Grid item lg={2}>
                         <Button onClick={pesquisarCriptos}

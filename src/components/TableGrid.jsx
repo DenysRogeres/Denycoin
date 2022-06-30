@@ -1,11 +1,13 @@
 import * as React from 'react';
+import { createTheme } from "@mui/material/styles";
 import { Button, 
         Table, 
         TableBody, 
         TableCell,
         TableContainer, 
         TableHead, 
-        TableRow, 
+        TableRow,
+        Typography, 
         Link 
       } from '@mui/material';
 
@@ -32,7 +34,17 @@ export function TableGrid({lista}) {
               </TableCell>
               <TableCell align="center">{data.nome}</TableCell>
               <TableCell align="center">${data.preco}</TableCell>
-              <TableCell align="center">{data.variacao}%</TableCell>
+              <TableCell align="center">
+                <Typography 
+                    sx={{
+                        fontWeight: '500',
+                        color: `${data.variacao.includes('-') ?
+                                   'span.negativo': 
+                                   'span.positivo'}`
+                        }}>
+                  {data.variacao}%
+                </Typography>
+              </TableCell>
               <TableCell align="center">${data.capitalizacao}M</TableCell>
               <TableCell align="center">{data.tipo}</TableCell>
               <TableCell align="center">
