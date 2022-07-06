@@ -11,7 +11,7 @@ export function Header() {
                         alignItems: 'center'
                          }}>
                     <Box>
-                        <img src="src\assets\denycoin-logo.svg" height={28}/>
+                        <img src="src\assets\deny-icon.png" height={50}/>
                     </Box>
                     <Typography component="div" sx={{ 
                         fontFamily:'Roboto',

@@ -27,7 +27,7 @@ export function TableGrid({lista}) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {lista.map((data) => (
+          {Array.isArray(lista) ? lista.map((data) => (
             <TableRow key={data.sigla}>
               <TableCell component="th" scope="row">
                 <Box sx={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
@@ -58,7 +58,38 @@ export function TableGrid({lista}) {
                 </Link>
               </TableCell>
             </TableRow>
-          ))}
+          )) :
+            <TableRow key={lista.sigla}>
+            <TableCell component="th" scope="row">
+              <Box sx={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
+                <Box sx={{height: 25, width: 25, marginRight: 1}} component="img" src={lista.image} />
+                <Box>{lista.sigla}</Box>
+              </Box>
+            </TableCell>
+            <TableCell align="center">{lista.nome}</TableCell>
+            <TableCell align="center">${lista.preco}</TableCell>
+            <TableCell align="center">
+              <Typography 
+                  sx={{
+                      fontWeight: '500',
+                      color: `${lista.variacao.includes('-') ?
+                                'span.negativo': 
+                                'span.positivo'}`
+                      }}>
+                {lista.variacao}%
+              </Typography>
+            </TableCell>
+            <TableCell align="center">${lista.capitalizacao}M</TableCell>
+            <TableCell align="center">{lista.tipo}</TableCell>
+            <TableCell align="center">
+              <Link href={lista.comprar} underline="none">
+                <Button variant="contained" size="small">
+                  Comprar
+                </Button>
+              </Link>
+            </TableCell>
+          </TableRow>
+          }
         </TableBody>
       </Table>
     </TableContainer>
